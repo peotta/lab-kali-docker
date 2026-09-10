@@ -1,0 +1,33 @@
+version: "3.8"
+
+networks:
+  lab_redsec:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  login-simples:
+    image: lab-kali-docker/login-simples:latest
+    container_name: alvo-login
+    networks:
+      lab_redsec:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  samba:
+    image: vulhub/samba:4.6.3
+    container_name: alvo-samba
+    tty: true
+    volumes:
+      - ./smb.conf:/usr/local/samba/etc/smb.conf
+    networks:
+      lab_redsec:
+        ipv4_address: 172.20.0.13
+    ports:
+      - "445:445"
+      - "6699:6699"
+    restart: unless-stopped
