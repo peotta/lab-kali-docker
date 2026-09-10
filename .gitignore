@@ -1,0 +1,8 @@
+# Pacote de imagens Docker (~400MB) — distribuído via GitHub Release, não versionado no Git
+lab-images.tar
+lab-images.tar.gz
+
+# Arquivos temporários de teste
+hash.txt
+hash_hashcat.txt
+*.log
