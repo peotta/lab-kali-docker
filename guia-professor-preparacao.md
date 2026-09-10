@@ -205,12 +205,3 @@ Inclua também no repositório os arquivos `login-simples/index.php`, `login-sim
 
 ---
 
-## 8. Cronograma sugerido (aula em 23/09)
-
-| Data | O que fazer |
-|---|---|
-| até 09/09 (hoje) | Build + teste ponta a ponta (Seções 1–4 deste guia) |
-| até 16/09 | Publicar `lab-images.tar` (Seção 6) e atualizar o `README.md` |
-| 16 a 18/09 | Avisar a turma, com o link e o checklist de verificação (Seção 3.7 do roteiro do aluno) |
-| 21 a 22/09 | Cobrar confirmação de quem ainda não testou; preparar pendrives de contingência |
-| 23/09 — dia da aula | Só trazer os pendrives de backup — nenhum download deve ser necessário |
