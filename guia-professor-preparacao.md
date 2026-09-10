@@ -1,6 +1,6 @@
 # Guia de Preparação do Professor: Build e Distribuição das Imagens do Laboratório
 
-Este guia é para você, antes da aula. O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.4 do roteiro do aluno), sem precisar buildar nada.
+O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.4 do roteiro do aluno), sem precisar buildar nada.
 
 ---
 
