@@ -36,8 +36,9 @@ chmod +x setup.sh
 **5. No final, o script mostra o resultado do `docker compose ps`.** Confirme que os dois alvos aparecem como `Up`:
 
 ```
-alvo-login   Up   0.0.0.0:80->80/tcp
-alvo-samba   Up   0.0.0.0:445->445/tcp
+NAME         IMAGE                                  SERVICE         STATUS         PORTS
+alvo-login   lab-kali-docker/login-simples:latest   login-simples   Up             0.0.0.0:80->80/tcp
+alvo-samba   vulhub/samba:4.6.3                     samba           Up             0.0.0.0:445->445/tcp, 0.0.0.0:6699->6699/tcp
 ```
 
 Se aparecer isso, terminou — o ambiente está pronto.
@@ -76,4 +77,50 @@ curl -s -o /dev/null -w "%{http_code}\n" http://172.20.0.10
 nmap -sV -p 445 172.20.0.13
 ```
 
-O primeiro comando deve retornar `200`, o segundo deve mostrar `Samba smbd`. Se os dois baterem, o ambiente está validado e pronto para os alunos usarem.
+**Resultado esperado do `curl`:**
+
+```
+200
+```
+
+**Resultado esperado do `nmap`:**
+
+```
+PORT    STATE SERVICE     VERSION
+445/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+Service Info: Host: <nome-do-container>
+```
+
+Se os dois baterem, o ambiente está validado e pronto para os alunos usarem.
+
+Para uma verificação ainda mais completa (opcional, confirma que os exercícios de verdade funcionam, não só que os containers estão de pé):
+
+```bash
+curl http://172.20.0.10/admin/backup_users.txt
+```
+
+**Resultado esperado:**
+
+```
+admin:482c811da5d5b4bc6d497ffa98491e38
+```
+
+```bash
+smbclient -L 172.20.0.13 -N
+```
+
+**Resultado esperado:**
+
+```
+        Sharename       Type      Comment
+        ---------       ----      -------
+        myshare         Disk
+        IPC$            IPC       IPC Service (Samba Server Version 4.6.3)
+Reconnecting with SMB1 for workgroup listing.
+
+        Server               Comment
+        ---------            -------
+
+        Workgroup            Master
+        ---------            -------
+```
