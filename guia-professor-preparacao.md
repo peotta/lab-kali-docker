@@ -1,12 +1,78 @@
 # Guia de Preparação do Professor: Build e Distribuição das Imagens do Laboratório
 
-Este guia é para você, antes da aula. O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.4 do roteiro do aluno), sem precisar buildar nada.
+O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.5 do roteiro do aluno), sem precisar buildar nada.
+
+---
+
+## 0. Instalando o Docker e o GitHub CLI no Kali
+
+Se você ainda não tem Docker instalado na máquina que vai usar para buildar/testar as imagens, siga os passos abaixo — é o mesmo processo documentado na Seção 3.2 do roteiro do aluno (você vai precisar dele de qualquer forma para validar o ambiente antes de distribuir).
+
+### 0.1 Docker
+
+O Kali **não** vem com Docker pré-instalado por padrão, e os pacotes do repositório oficial dele têm nomes/disponibilidade inconsistentes — o caminho mais confiável é o instalador oficial da própria Docker.
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+**Se aparecer o erro `the repository 'https://download.docker.com/linux/debian kali-rolling Release' does not have a Release file`:** o script detecta o Kali como Debian, mas usa o codinome `kali-rolling`, que os repositórios do Docker não reconhecem. Corrija apontando para um codinome Debian válido:
+
+```bash
+sudo rm /etc/apt/sources.list.d/docker.list
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+**Não instale `podman-docker`** mesmo que o terminal sugira esse pacote — ele substitui o comando `docker` por uma camada de compatibilidade do Podman, o que causa comportamento inconsistente com o `docker-compose.yml` deste laboratório (especialmente a rede com IP fixo). Se instalou por engano:
+
+```bash
+sudo apt remove -y podman-docker
+sudo apt autoremove -y
+```
+
+Aplique a permissão de grupo e confirme:
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+
+docker --version
+docker compose version
+docker run hello-world
+```
+
+Se aparecer a mensagem "Hello from Docker!", está tudo certo.
+
+### 0.2 GitHub CLI (`gh`) — necessário para publicar a Release (Seção 6)
+
+Também não está nos repositórios padrão do Kali. Instale pelo repositório oficial:
+
+```bash
+(type -p wget >/dev/null || sudo apt install wget -y) \
+&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+```
+
+Depois, autentique (escolha `GitHub.com` → `HTTPS` → `Paste an authentication token`, usando um Personal Access Token com escopo `repo` gerado em [github.com/settings/tokens](https://github.com/settings/tokens)):
+
+```bash
+gh auth login
+```
 
 ---
 
 ## 1. Buildar a imagem da página de login simples
 
-Esse é o único alvo que você precisa construir — é uma página PHP de poucas linhas, sem banco de dados, feita especificamente para os exercícios de sniffing (Trilha B), brute force (Trilha C), quebra de hash offline (Trilha D) e enumeração de diretórios (Fase 1).
+Esse é o único alvo que você precisa construir — é uma página PHP de poucas linhas, sem banco de dados, feita especificamente para os exercícios de sniffing (Atividade 4), brute force (Atividade 5), quebra de hash offline (Atividade 6) e enumeração de diretórios (Atividade 1).
 
 Crie uma pasta `login-simples/` com quatro arquivos:
 
@@ -100,7 +166,7 @@ O Samba vulnerável (CVE-2017-7494, "SambaCry") já está disponível pronto no 
 docker pull vulhub/samba:4.6.3
 ```
 
-Esse serviço também precisa de um segundo arquivo, `smb.conf`, na mesma pasta do `docker-compose.yml` — veja o conteúdo na Seção 3.5 do roteiro do aluno.
+Esse serviço também precisa de um segundo arquivo, `smb.conf`, na mesma pasta do `docker-compose.yml` — veja o conteúdo na Seção 3.6 do roteiro do aluno.
 
 ---
 
@@ -130,7 +196,7 @@ curl -s http://172.20.0.10/admin/backup_users.txt                              #
 nmap -sV -p 445 172.20.0.13                                                      # deve mostrar Samba smbd
 ```
 
-Rode também o exploit do Metasploit para o SambaCry (Seção 6.1 do roteiro), a captura com `ngrep` (Seção 6.2), o `hydra` (Seção 6.3) e o `john`/`hashcat` (Seção 6.4), ponta a ponta, para confirmar que os quatro exercícios funcionam com as imagens que você vai distribuir. Se for usar o `hashcat` em VM sem GPU dedicada, confirme com antecedência que o runtime OpenCL (`pocl-opencl-icd`) está instalado — sem ele, o comando falha com "No OpenCL... platform found".
+Rode também o exploit do Metasploit para o SambaCry (Atividade 3 do roteiro), a captura com `ngrep` (Atividade 4), o `hydra` (Atividade 5) e o `john`/`hashcat` (Atividade 6), ponta a ponta, para confirmar que os quatro exercícios funcionam com as imagens que você vai distribuir. Se for usar o `hashcat` em VM sem GPU dedicada, confirme com antecedência que o runtime OpenCL (`pocl-opencl-icd`) está instalado — sem ele, o comando falha com "No OpenCL... platform found".
 
 ---
 
@@ -202,15 +268,3 @@ Consulte o roteiro completo em `roteiro-lab-kali-docker.md`, Seção 3.
 ```
 
 Inclua também no repositório os arquivos `login-simples/index.php`, `login-simples/Dockerfile`, `docker-compose.yml` e `smb.conf` — são pequenos, versionam bem no Git normalmente (só o `.tar` fica de fora, via `.gitignore`).
-
----
-
-## 8. Cronograma sugerido (aula em 23/09)
-
-| Data | O que fazer |
-|---|---|
-| até 09/09 (hoje) | Build + teste ponta a ponta (Seções 1–4 deste guia) |
-| até 16/09 | Publicar `lab-images.tar` (Seção 6) e atualizar o `README.md` |
-| 16 a 18/09 | Avisar a turma, com o link e o checklist de verificação (Seção 3.7 do roteiro do aluno) |
-| 21 a 22/09 | Cobrar confirmação de quem ainda não testou; preparar pendrives de contingência |
-| 23/09 — dia da aula | Só trazer os pendrives de backup — nenhum download deve ser necessário |

