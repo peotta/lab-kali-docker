@@ -16,7 +16,7 @@ Este guia é para quem vai **ajudar a preparar o ambiente** do laboratório (nã
 wget https://github.com/peotta/lab-kali-docker/releases/download/v1.0/setup.sh
 ```
 
-Se o link acima não funcionar (o script ainda não foi anexado à Release), peça o arquivo `setup.sh` diretamente ao professor e salve na sua pasta pessoal.
+Se o link acima não funcionar (o script ainda não foi anexado à Release), peça o arquivo [`setup.sh`](https://github.com/peotta/lab-kali-docker/blob/main/setup.sh) diretamente ao professor e salve na sua pasta pessoal.
 
 **3. Dê permissão de execução e rode:**
 
@@ -41,7 +41,7 @@ alvo-login   lab-kali-docker/login-simples:latest   login-simples   Up          
 alvo-samba   vulhub/samba:4.6.3                     samba           Up             0.0.0.0:445->445/tcp, 0.0.0.0:6699->6699/tcp
 ```
 
-Se aparecer isso, terminou — o ambiente está pronto.
+Se aparecer isso, terminou - o ambiente está pronto.
 
 ---
 
@@ -64,7 +64,7 @@ docker compose ps
 | Erro `kali-rolling Release file` durante instalação do Docker | Kali não é reconhecido pelo repositório oficial do Docker | O script já corrige isso automaticamente |
 | `permission denied` ao rodar `docker` | Grupo `docker` só aplica em sessão nova | Feche e abra o terminal de novo, ou rode `newgrp docker` |
 | `Pool overlaps with other one` ao subir os containers | Já existe outra rede Docker usando `172.20.0.0/24` (ex.: outra cópia do laboratório rodando) | `docker compose down -v` na outra pasta antes de subir esta |
-| `wget` do `.tar` falha | Rede lenta ou instável | Tente de novo — o arquivo é grande (~390MB) |
+| `wget` do `.tar` falha | Rede lenta ou instável | Tente de novo - o arquivo é grande (~390MB) |
 
 Se nada disso resolver, chame o professor.
 
@@ -124,3 +124,7 @@ Reconnecting with SMB1 for workgroup listing.
         Workgroup            Master
         ---------            -------
 ```
+
+---
+
+Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).

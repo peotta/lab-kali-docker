@@ -93,3 +93,7 @@ lab-kali-docker/
 ## Licença / uso
 
 Material didático para fins educacionais, em ambiente isolado. Uso fora desse contexto não é autorizado nem endossado.
+
+---
+
+Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).

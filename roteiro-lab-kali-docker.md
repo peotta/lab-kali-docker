@@ -95,7 +95,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-**Não instale `podman-docker`** mesmo que o terminal sugira esse pacote em alguma mensagem de erro - ele cria um comando `docker` que na verdade roda o Podman por baixo (motor de container diferente), o que causa comportamentos inconsistentes com o `docker-compose.yml` deste laboratório (especialmente rede com IP fixo). Se você instalou por engano, remova antes de seguir:
+**Não instale `podman-docker`** mesmo que o terminal sugira esse pacote em alguma mensagem de erro - ele cria um comando `docker` que na verdade roda o Podman por baixo (motor de container diferente), o que causa comportamentos inconsistentes com o [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) deste laboratório (especialmente rede com IP fixo). Se você instalou por engano, remova antes de seguir:
 
 ```bash
 sudo apt remove -y podman-docker
@@ -165,7 +165,7 @@ mkdir -p ~/Desktop
 cd ~/Desktop
 ```
 
-Agora clone o repositório do laboratório **dentro** dessa pasta - o `git clone` cria automaticamente uma subpasta com o nome do repositório (`lab-kali-docker/`), já contendo o `docker-compose.yml`, o `smb.conf` e a pasta `login-simples/` prontos (o professor já deixou tudo commitado):
+Agora clone o repositório do laboratório **dentro** dessa pasta - o `git clone` cria automaticamente uma subpasta com o nome do repositório (`lab-kali-docker/`), já contendo o [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml), o [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf) e a pasta `login-simples/` prontos (o professor já deixou tudo commitado):
 
 ```bash
 git clone https://github.com/peotta/lab-kali-docker.git
@@ -223,7 +223,7 @@ Confirme com:
 ls -la ~/Desktop/lab-kali-docker/
 ```
 
-Você **não precisa criar** nenhum desses arquivos manualmente - eles já vêm prontos no repositório. Os conteúdos abaixo (`docker-compose.yml` e `smb.conf`) estão aqui só para referência, caso queira entender o que cada um faz ou precise recriá-los em caso de algum problema:
+Você **não precisa criar** nenhum desses arquivos manualmente - eles já vêm prontos no repositório. Os conteúdos abaixo ([`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) e [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf)) estão aqui só para referência, caso queira entender o que cada um faz ou precise recriá-los em caso de algum problema:
 
 **`~/Desktop/lab-kali-docker/docker-compose.yml`:**
 
@@ -759,3 +759,7 @@ docker logs alvo-samba
 - [Metasploit Unleashed](https://www.offsec.com/metasploit-unleashed/) - curso gratuito e completo sobre Metasploit
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/) - as vulnerabilidades mais críticas em aplicações web
 - [Exploit-DB](https://www.exploit-db.com/) - versão online do banco usado pelo `searchsploit`
+
+---
+
+Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).
