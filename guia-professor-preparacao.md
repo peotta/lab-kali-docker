@@ -268,7 +268,3 @@ Consulte o roteiro completo em `roteiro-lab-kali-docker.md`, Seção 3.
 ```
 
 Inclua também no repositório os arquivos [`login-simples/index.php`](https://github.com/peotta/lab-kali-docker/blob/main/login-simples/index.php), [`login-simples/Dockerfile`](https://github.com/peotta/lab-kali-docker/blob/main/login-simples/Dockerfile), [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) e [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf) - são pequenos, versionam bem no Git normalmente (só o `.tar` fica de fora, via `.gitignore`).
-
----
-
-Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).

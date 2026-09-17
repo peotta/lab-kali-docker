@@ -124,7 +124,3 @@ Reconnecting with SMB1 for workgroup listing.
         Workgroup            Master
         ---------            -------
 ```
-
----
-
-Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).

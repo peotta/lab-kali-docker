@@ -759,7 +759,3 @@ docker logs alvo-samba
 - [Metasploit Unleashed](https://www.offsec.com/metasploit-unleashed/) - curso gratuito e completo sobre Metasploit
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/) - as vulnerabilidades mais críticas em aplicações web
 - [Exploit-DB](https://www.exploit-db.com/) - versão online do banco usado pelo `searchsploit`
-
----
-
-Material produzido pelo professor Laerte Peotta de Melo, com auxílio da IA Claude (Anthropic).
