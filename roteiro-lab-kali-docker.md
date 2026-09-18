@@ -43,12 +43,22 @@
 
 Um teste de intrusão (pentest) não é uma sequência aleatória de comandos - é um processo com fases bem definidas, cada uma alimentando a próxima:
 
-```
-Reconhecimento  →  Enumeração  →  Análise de       →  Exploração  →  Pós-Exploração
-(o que existe?)    (o que está    Vulnerabilidades     (comprovar      (o que dá para
-                    rodando?)     (o que está           o acesso)      fazer com o
-                                  desatualizado/                       acesso obtido?)
-                                  vulnerável?)
+```mermaid
+flowchart LR
+
+    A["Reconhecimento<br/>(o que existe?)"]
+    B["Enumeração<br/>(o que está<br/>rodando?)"]
+    C["Análise de Vulnerabilidades<br/>(o que está desatualizado/<br/>vulnerável?)"]
+    D["Exploração<br/>(comprovar<br/>o acesso)"]
+    E["Pós-Exploração<br/>(o que dá para fazer<br/>com o acesso obtido?)"]
+
+    A --> B --> C --> D --> E
+
+    style A fill:none,stroke:none
+    style B fill:none,stroke:none
+    style C fill:none,stroke:none
+    style D fill:none,stroke:none
+    style E fill:none,stroke:none
 ```
 
 - **Reconhecimento:** mapear o que existe na rede - hosts ativos, portas abertas.
