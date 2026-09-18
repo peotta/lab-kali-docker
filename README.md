@@ -23,13 +23,14 @@ Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência.
    ```bash
    wget https://github.com/peotta/lab-kali-docker/releases/download/v1.0/lab-images.tar
    ```
+   > Se o link não estiver acessível, um pendrive com `lab-images.tar` estará disponível - procure o professor com antecedência, não no dia da aula.
 
 4. Carregue as imagens no Docker local:
    ```bash
    docker load -i lab-images.tar
    docker images
    ```
-   Deve mostrar `lab-kali-docker/login-simples` e `vulhub/samba`.
+   Deve mostrar `lab-kali-docker/login-simples:latest` e `vulhub/samba:4.6.3`.
 
 5. Suba o ambiente e confirme:
    ```bash
@@ -39,6 +40,11 @@ Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência.
    Os 2 alvos (`alvo-login`, `alvo-samba`) devem aparecer como `Up`.
 
 6. Confirme o acesso: `http://172.20.0.10` deve abrir a página de login no navegador.
+
+> **Alternativa automatizada:** em vez dos passos 1-5 acima, você pode rodar o script [`setup.sh`](https://github.com/peotta/lab-kali-docker/blob/main/setup.sh) diretamente - ele instala o Docker (se necessário), clona o repositório, baixa as imagens e sobe o ambiente com um único comando:
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/peotta/lab-kali-docker/main/setup.sh | bash
+> ```
 
 Se qualquer passo falhar, procure o professor com antecedência: resolver isso no dia da aula tira tempo de prática de todo mundo.
 
