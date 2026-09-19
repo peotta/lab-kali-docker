@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <h1>Painel Administrativo</h1>
     <p>Este recurso não está linkado em nenhum lugar da aplicação.</p>
-    <p>Se você chegou até aqui, foi por enumeração de diretórios — exatamente
+    <p>Se você chegou até aqui, foi por enumeração de diretórios - exatamente
        o tipo de recurso "esquecido" que times de segurança encontram em
        ambientes reais: paineis de administração, backups, arquivos de
        configuração, expostos sem querer, sem estarem em nenhum menu visível.</p>

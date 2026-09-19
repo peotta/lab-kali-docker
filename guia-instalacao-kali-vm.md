@@ -1,10 +1,10 @@
 # Guia de Instalação: Kali Linux em Máquina Virtual
 
-Este guia cobre a instalação do Kali Linux em máquina virtual (VM) usando a **imagem pré-construída oficial** — a forma mais rápida e confiável para ter um Kali funcional sem precisar passar por uma instalação completa do zero.
+Este guia cobre a instalação do Kali Linux em máquina virtual (VM) usando a **imagem pré-construída oficial** - a forma mais rápida e confiável para ter um Kali funcional sem precisar passar por uma instalação completa do zero.
 
-Dois softwares de virtualização são cobertos: **VirtualBox** (seção 1) e **VMware Workstation Pro** (seção 2). Siga a seção do software que você vai usar — não precisa fazer os dois.
+Dois softwares de virtualização são cobertos: **VirtualBox** (seção 1) e **VMware Workstation Pro** (seção 2). Siga a seção do software que você vai usar - não precisa fazer os dois.
 
-> ℹ️ **Por que usar a imagem pré-construída?** O site do Kali distribui VMs já configuradas, com ferramentas instaladas e credenciais padrão definidas. Você baixa, importa e já tem um sistema funcional em minutos — sem particionar disco, sem configurar bootloader, sem escolher pacotes.
+> ℹ️ **Por que usar a imagem pré-construída?** O site do Kali distribui VMs já configuradas, com ferramentas instaladas e credenciais padrão definidas. Você baixa, importa e já tem um sistema funcional em minutos - sem particionar disco, sem configurar bootloader, sem escolher pacotes.
 
 ---
 
@@ -37,9 +37,9 @@ O VirtualBox é gratuito e roda em Windows, macOS e Linux.
 1. Acesse a página oficial de downloads: **<https://www.virtualbox.org/wiki/Downloads>**
 2. Baixe o instalador para o seu sistema operacional (Windows, macOS ou Linux).
 3. Execute o instalador e siga os passos padrão (Next → Next → Install). Aceite a instalação do driver de rede quando solicitado.
-4. *(Opcional, mas recomendado)* Na mesma página, baixe e instale também o **VirtualBox Extension Pack** — ele adiciona suporte a USB 2.0/3.0 e outras integrações úteis.
+4. *(Opcional, mas recomendado)* Na mesma página, baixe e instale também o **VirtualBox Extension Pack** - ele adiciona suporte a USB 2.0/3.0 e outras integrações úteis.
 
-> ⚠️ **Windows:** durante a instalação, o Windows pode avisar que a rede vai cair por alguns segundos — isso é normal, confirme e aguarde.
+> ⚠️ **Windows:** durante a instalação, o Windows pode avisar que a rede vai cair por alguns segundos - isso é normal, confirme e aguarde.
 
 ### 1.2 Baixar a imagem do Kali para VirtualBox
 
@@ -98,7 +98,7 @@ Antes de ligar a VM pela primeira vez, ajuste os recursos conforme sua máquina:
 
 5. **Rede:**
    - **Adaptador 1:** deixe como **NAT** para acesso à internet dentro da VM.
-   - Para o laboratório Docker, o adaptador NAT é suficiente — o Docker cria a rede isolada (`172.20.0.0/24`) internamente.
+   - Para o laboratório Docker, o adaptador NAT é suficiente - o Docker cria a rede isolada (`172.20.0.0/24`) internamente.
 
 6. Clique em **OK** para salvar.
 
@@ -134,7 +134,7 @@ Antes de ligar a VM pela primeira vez, ajuste os recursos conforme sua máquina:
 
 ## 2. VMware Workstation Pro (gratuito desde 2024)
 
-Desde o final de 2024, a Broadcom (que adquiriu a VMware) tornou o **VMware Workstation Pro gratuito para todos os usos** — pessoal, educacional e comercial. A edição "Player" foi descontinuada; o Workstation Pro é agora a versão padrão e gratuita.
+Desde o final de 2024, a Broadcom (que adquiriu a VMware) tornou o **VMware Workstation Pro gratuito para todos os usos** - pessoal, educacional e comercial. A edição "Player" foi descontinuada; o Workstation Pro é agora a versão padrão e gratuita.
 
 ### 2.1 Instalar o VMware Workstation Pro
 
@@ -153,7 +153,7 @@ Desde o final de 2024, a Broadcom (que adquiriu a VMware) tornou o **VMware Work
      sudo ./VMware-Workstation-Full-*.bundle
      ```
 
-5. Quando solicitado se deseja inserir uma chave de licença, clique em **Continuar sem licença** (ou equivalente) — o software é gratuito e funciona sem chave.
+5. Quando solicitado se deseja inserir uma chave de licença, clique em **Continuar sem licença** (ou equivalente) - o software é gratuito e funciona sem chave.
 
 ### 2.2 Baixar a imagem do Kali para VMware
 
@@ -181,7 +181,7 @@ Desde o final de 2024, a Broadcom (que adquiriu a VMware) tornou o **VMware Work
 3. Navegue até a pasta extraída e selecione o arquivo **`.vmx`**.
 4. A VM aparece na lista lateral. Clique em **Power On** para iniciá-la.
 
-   > ℹ️ O VMware pode perguntar se a VM foi **movida** ou **copiada** — selecione **Copiei** (*I copied it*). Isso regenera os identificadores únicos da VM sem problemas.
+   > ℹ️ O VMware pode perguntar se a VM foi **movida** ou **copiada** - selecione **Copiei** (*I copied it*). Isso regenera os identificadores únicos da VM sem problemas.
 
 ### 2.4 Configurações recomendadas
 
@@ -238,7 +238,7 @@ Independentemente do software de virtualização usado, estes ajustes são recom
 
 ### 3.1 Tirar um snapshot ("foto" do estado atual)
 
-Antes de qualquer coisa, tire um **snapshot** da VM recém-configurada e atualizada. Se algo der errado durante o laboratório, você pode restaurar o estado original em segundos — sem reinstalar nada.
+Antes de qualquer coisa, tire um **snapshot** da VM recém-configurada e atualizada. Se algo der errado durante o laboratório, você pode restaurar o estado original em segundos - sem reinstalar nada.
 
 **VirtualBox:**
 ```
@@ -296,9 +296,9 @@ Se o Docker ainda não estiver instalado, siga a Seção 3.2 do [`roteiro-lab-ka
 | RAM total no host | 8 GB | 16 GB |
 | RAM alocada para a VM | 4 GB | 8 GB |
 | Espaço em disco | 40 GB livres | 80 GB (SSD) |
-| Sistema operacional host | Windows 10/11, macOS 12+, ou Linux | — |
+| Sistema operacional host | Windows 10/11, macOS 12+, ou Linux | - |
 
-> ⚠️ **Virtualização na BIOS/UEFI:** se ao iniciar a VM aparecer um erro como `VT-x is not available` (VirtualBox) ou `VMX is not supported` (VMware), é necessário habilitar a virtualização nas configurações da BIOS/UEFI. Procure pelas opções "Virtualization Technology", "Intel VT-x" ou "AMD-V/SVM" nas configurações avançadas — o caminho exato varia por fabricante (geralmente acessado pressionando F2, Del ou F10 durante o boot).
+> ⚠️ **Virtualização na BIOS/UEFI:** se ao iniciar a VM aparecer um erro como `VT-x is not available` (VirtualBox) ou `VMX is not supported` (VMware), é necessário habilitar a virtualização nas configurações da BIOS/UEFI. Procure pelas opções "Virtualization Technology", "Intel VT-x" ou "AMD-V/SVM" nas configurações avançadas - o caminho exato varia por fabricante (geralmente acessado pressionando F2, Del ou F10 durante o boot).
 
 ---
 

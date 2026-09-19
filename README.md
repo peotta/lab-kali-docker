@@ -11,7 +11,7 @@ Curso de extensão prático de 4h: Kali Linux contra alvos vulneráveis em Docke
 
 Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência. **Não deixe para o dia da aula.**
 
-0. **Você precisa de um Kali Linux** para executar as atividades. Se ainda não tiver, instale em máquina virtual seguindo o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) — cobre VirtualBox e VMware.
+0. **Você precisa de um Kali Linux** para executar as atividades. Se ainda não tiver, instale em máquina virtual seguindo o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) - cobre VirtualBox e VMware.
 
 1. Instale o Docker (veja [`roteiro-lab-kali-docker.md`](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md), Seção 3.2, se ainda não tiver)
 
@@ -77,7 +77,7 @@ lab-kali-docker/
 | Arquivo | O que é | Para quem |
 |---|---|---|
 | [`README.md`](https://github.com/peotta/lab-kali-docker/blob/main/README.md) | Este arquivo: visão geral do repositório, preparação rápida e índice de tudo o mais | Todo mundo, primeiro contato com o repositório |
-| [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) | Instalar o Kali Linux em máquina virtual usando a imagem pré-construída oficial — cobre VirtualBox e VMware Workstation Pro, configurações recomendadas, primeiro acesso e pós-instalação | **Alunos** que ainda não têm Kali instalado, passo zero antes do roteiro |
+| [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) | Instalar o Kali Linux em máquina virtual usando a imagem pré-construída oficial - cobre VirtualBox e VMware Workstation Pro, configurações recomendadas, primeiro acesso e pós-instalação | **Alunos** que ainda não têm Kali instalado, passo zero antes do roteiro |
 | [`roteiro-lab-kali-docker.md`](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md) | Roteiro completo da aula: metodologia de pentest, preparação do ambiente e as 7 atividades práticas (reconhecimento, SambaCry, sniffing, força bruta, hash cracking, pós-exploração), com comandos e resultados esperados | **Alunos**, é o documento que se segue durante a aula, do início ao fim |
 | [`guia-professor-preparacao.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-professor-preparacao.md) | Como buildar as imagens Docker do zero, empacotar no `.tar`, publicar como Release do GitHub e testar tudo antes de disponibilizar aos alunos | **Professor**, preparação de bastidor, feita uma vez antes da turma usar |
 | [`guia-monitores-preparacao.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-monitores-preparacao.md) | Versão curta e direta: só o essencial para instalar e subir o ambiente numa máquina nova, com solução de problemas comuns | **Monitores/equipe técnica**, quem vai preparar as máquinas físicas do laboratório |

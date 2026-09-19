@@ -83,7 +83,7 @@ Isso não é burocracia: a diferença entre um profissional de segurança e um c
 
 ## 3. Atividade 0 - Preparando o ambiente
 
-> **Pré-requisito:** este roteiro pressupõe que você já tem um **Kali Linux** funcional (nativo ou em máquina virtual). Se ainda não tiver, instale usando o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) antes de continuar — o guia cobre VirtualBox e VMware com a imagem pré-construída oficial.
+> **Pré-requisito:** este roteiro pressupõe que você já tem um **Kali Linux** funcional (nativo ou em máquina virtual). Se ainda não tiver, instale usando o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) antes de continuar - o guia cobre VirtualBox e VMware com a imagem pré-construída oficial.
 
 ### 3.1 Por que Docker?
 
