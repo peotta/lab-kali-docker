@@ -37,6 +37,8 @@
 10. [Atividade 7 - Pós-Exploração](#10-atividade-7--pós-exploração)
 11. [Resumo das ferramentas e próximos passos](#11-resumo-das-ferramentas-e-próximos-passos)
 
+> **Não tem o Kali instalado ainda?** Antes de continuar, siga o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) para instalar o Kali Linux em máquina virtual (VirtualBox ou VMware). Depois volte aqui e continue a partir da Seção 3.
+
 ---
 
 ## 1. Introdução: a metodologia de um teste de intrusão
@@ -80,6 +82,8 @@ Isso não é burocracia: a diferença entre um profissional de segurança e um c
 ---
 
 ## 3. Atividade 0 - Preparando o ambiente
+
+> **Pré-requisito:** este roteiro pressupõe que você já tem um **Kali Linux** funcional (nativo ou em máquina virtual). Se ainda não tiver, instale usando o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) antes de continuar — o guia cobre VirtualBox e VMware com a imagem pré-construída oficial.
 
 ### 3.1 Por que Docker?
 
