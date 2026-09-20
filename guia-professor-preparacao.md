@@ -1,12 +1,12 @@
 # Guia de Preparação do Professor: Build e Distribuição das Imagens do Laboratório
 
-O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.5 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md)), sem precisar buildar nada.
+O resultado final é um arquivo `lab-images.tar` que os alunos baixam e carregam localmente (Seção 3.5 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md)), sem precisar buildar nada.
 
 ---
 
 ## 0. Instalando o Docker e o GitHub CLI no Kali
 
-Se você ainda não tem Docker instalado na máquina que vai usar para buildar/testar as imagens, siga os passos abaixo - é o mesmo processo documentado na Seção 3.2 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md) (você vai precisar dele de qualquer forma para validar o ambiente antes de distribuir).
+Se você ainda não tem Docker instalado na máquina que vai usar para buildar/testar as imagens, siga os passos abaixo - é o mesmo processo documentado na Seção 3.2 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md) (você vai precisar dele de qualquer forma para validar o ambiente antes de distribuir).
 
 ### 0.1 Docker
 
@@ -148,7 +148,7 @@ COPY index.php /var/www/html/index.php
 COPY admin/ /var/www/html/admin/
 ```
 
-Builde e tagueie com o nome que o [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md) espera:
+Builde e tagueie com o nome que o [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md) espera:
 
 ```bash
 cd login-simples
@@ -166,7 +166,7 @@ O Samba vulnerável (CVE-2017-7494, "SambaCry") já está disponível pronto no 
 docker pull vulhub/samba:4.6.3
 ```
 
-Esse serviço também precisa de um segundo arquivo, [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf), na mesma pasta do [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) - veja o conteúdo na Seção 3.6 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md).
+Esse serviço também precisa de um segundo arquivo, [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf), na mesma pasta do [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) - veja o conteúdo na Seção 3.6 do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md).
 
 ---
 
@@ -176,7 +176,7 @@ Esse serviço também precisa de um segundo arquivo, [`smb.conf`](https://github
 docker images | grep -E "login-simples|vulhub/samba"
 ```
 
-Você deve ver as 2 linhas. Os nomes precisam bater exatamente com o que está no [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md) - se você usou tags diferentes, ajuste um dos dois lados antes de seguir.
+Você deve ver as 2 linhas. Os nomes precisam bater exatamente com o que está no [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) do [roteiro do aluno](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md) - se você usou tags diferentes, ajuste um dos dois lados antes de seguir.
 
 ---
 
@@ -264,7 +264,7 @@ Inclua no topo do repositório, de forma bem visível:
    docker compose up -d
    docker compose ps
 
-Consulte o roteiro completo em `roteiro-lab-kali-docker.md`, Seção 3.
+Consulte o roteiro completo em `guia-aluno-roteiro.md`, Seção 3.
 ```
 
 Inclua também no repositório os arquivos [`login-simples/index.php`](https://github.com/peotta/lab-kali-docker/blob/main/login-simples/index.php), [`login-simples/Dockerfile`](https://github.com/peotta/lab-kali-docker/blob/main/login-simples/Dockerfile), [`docker-compose.yml`](https://github.com/peotta/lab-kali-docker/blob/main/docker-compose.yml) e [`smb.conf`](https://github.com/peotta/lab-kali-docker/blob/main/smb.conf) - são pequenos, versionam bem no Git normalmente (só o `.tar` fica de fora, via `.gitignore`).

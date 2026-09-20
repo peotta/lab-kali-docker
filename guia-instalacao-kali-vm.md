@@ -284,7 +284,7 @@ docker --version
 docker compose version
 ```
 
-Se o Docker ainda não estiver instalado, siga a Seção 3.2 do [`roteiro-lab-kali-docker.md`](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md).
+Se o Docker ainda não estiver instalado, siga a Seção 3.2 do [`guia-aluno-roteiro.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md).
 
 ---
 
@@ -306,7 +306,7 @@ Se o Docker ainda não estiver instalado, siga a Seção 3.2 do [`roteiro-lab-ka
 
 Com a VM do Kali funcionando:
 
-1. **Instale o Docker** dentro da VM: siga a Seção 3.2 do [`roteiro-lab-kali-docker.md`](https://github.com/peotta/lab-kali-docker/blob/main/roteiro-lab-kali-docker.md).
+1. **Instale o Docker** dentro da VM: siga a Seção 3.2 do [`guia-aluno-roteiro.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md).
 2. **Prepare o ambiente do laboratório:** siga a Atividade 0 do mesmo roteiro do início ao fim.
 3. **No dia da aula:** com o ambiente preparado, vá direto para a Atividade 1.
 
