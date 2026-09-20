@@ -69,7 +69,19 @@ run_docker() {
 }
 
 # ------------------------------------------------------------
-# 3. Criar diretório e clonar o repositório
+# 3. Verificar/instalar o Git
+# ------------------------------------------------------------
+if ! command -v git >/dev/null 2>&1; then
+    echo "[..] Git não encontrado. Instalando..."
+    sudo apt-get update -qq
+    sudo apt-get install -y git
+    echo "[OK] Git instalado: $(git --version)"
+else
+    echo "[OK] Git já está instalado: $(git --version)"
+fi
+
+# ------------------------------------------------------------
+# 5. Criar diretório e clonar o repositório
 # ------------------------------------------------------------
 mkdir -p "$(dirname "$LAB_DIR")"
 
@@ -84,7 +96,7 @@ else
 fi
 
 # ------------------------------------------------------------
-# 4. Baixar o pacote de imagens (.tar)
+# 6. Baixar o pacote de imagens (.tar)
 # ------------------------------------------------------------
 cd "$LAB_DIR"
 if [ -f "lab-images.tar" ]; then
@@ -95,13 +107,13 @@ else
 fi
 
 # ------------------------------------------------------------
-# 5. Carregar as imagens no Docker
+# 7. Carregar as imagens no Docker
 # ------------------------------------------------------------
 echo "[..] Carregando imagens no Docker..."
 run_docker "docker load -i '$LAB_DIR/lab-images.tar'"
 
 # ------------------------------------------------------------
-# 6. Subir o ambiente
+# 8. Subir o ambiente
 # ------------------------------------------------------------
 echo "[..] Subindo o ambiente (docker compose up -d)..."
 cd "$LAB_DIR"
