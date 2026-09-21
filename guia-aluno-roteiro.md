@@ -439,17 +439,20 @@ CVE (*Common Vulnerabilities and Exposures*) é um identificador padronizado par
 ### 5.2 `searchsploit` - cruzando versão com exploit conhecido
 
 ```bash
-searchsploit samba 4.6.3
+searchsploit --cve CVE-2017-7494
 ```
 
-**Resultado esperado (formato aproximado - o conteúdo exato do banco muda com atualizações):**
+Buscar por número de versão específico nem sempre funciona, já que o título do exploit costuma citar a versão que corrige a falha, não a vulnerável. Buscar pela própria CVE (com `--cve`) ou por palavra-chave do nome da vulnerabilidade (como `pipename`) é mais confiável.
+
+**Resultado esperado:**
 
 ```
---------------------------------------------------------- ---------------------------------
- Exploit Title                                            |  Path
---------------------------------------------------------- ---------------------------------
-Samba - is_known_pipename() Arbitrary Module Load ...     | linux/remote/XXXXX.rb
---------------------------------------------------------- ---------------------------------
+-------------------------------------------- ---------------------------------
+ Exploit Title                              |  Path
+-------------------------------------------- ---------------------------------
+Samba 3.5.0 - Remote Code Execution         | linux/remote/42060.py
+Samba 3.5.0 < 4.4.14/4.5.10/4.6.4 - 'is_kn  | linux/remote/42084.rb
+-------------------------------------------- ---------------------------------
 ```
 
 Esse é o exploit que vamos usar na Atividade 3, correspondente à CVE-2017-7494.
