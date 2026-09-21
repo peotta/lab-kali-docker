@@ -27,14 +27,14 @@
 
 1. [Introdução: a metodologia de um teste de intrusão](#1-introdução-a-metodologia-de-um-teste-de-intrusão)
 2. [Escopo e uso responsável](#2-escopo-e-uso-responsável)
-3. [Atividade 0 - Preparando o ambiente](#3-atividade-0--preparando-o-ambiente)
-4. [Atividade 1 - Reconhecimento e Enumeração](#4-atividade-1--reconhecimento-e-enumeração)
-5. [Atividade 2 - Análise de Vulnerabilidades](#5-atividade-2--análise-de-vulnerabilidades)
-6. [Atividade 3 - SambaCry via Metasploit](#6-atividade-3--sambacry-via-metasploit)
-7. [Atividade 4 - Sniffing de credenciais](#7-atividade-4--sniffing-de-credenciais)
-8. [Atividade 5 - Força bruta online](#8-atividade-5--força-bruta-online)
-9. [Atividade 6 - Quebra de hash offline](#9-atividade-6--quebra-de-hash-offline)
-10. [Atividade 7 - Pós-Exploração](#10-atividade-7--pós-exploração)
+3. [Atividade 0 - Preparando o ambiente](#3-atividade-0---preparando-o-ambiente)
+4. [Atividade 1 - Reconhecimento e Enumeração](#4-atividade-1---reconhecimento-e-enumeração)
+5. [Atividade 2 - Análise de Vulnerabilidades](#5-atividade-2---análise-de-vulnerabilidades)
+6. [Atividade 3 - SambaCry via Metasploit](#6-atividade-3---sambacry-via-metasploit)
+7. [Atividade 4 - Sniffing de credenciais](#7-atividade-4---sniffing-de-credenciais)
+8. [Atividade 5 - Força bruta online](#8-atividade-5---força-bruta-online)
+9. [Atividade 6 - Quebra de hash offline](#9-atividade-6---quebra-de-hash-offline)
+10. [Atividade 7 - Pós-Exploração](#10-atividade-7---pós-exploração)
 11. [Resumo das ferramentas e próximos passos](#11-resumo-das-ferramentas-e-próximos-passos)
 
 > **Não tem o Kali instalado ainda?** Antes de continuar, siga o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) para instalar o Kali Linux em máquina virtual (VirtualBox ou VMware). Depois volte aqui e continue a partir da Seção 3.
