@@ -85,6 +85,7 @@ Isso não é burocracia: a diferença entre um profissional de segurança e um c
 
 > **Pré-requisito:** este roteiro pressupõe que você já tem um **Kali Linux** funcional (nativo ou em máquina virtual). Se ainda não tiver, instale usando o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) antes de continuar - o guia cobre VirtualBox e VMware com a imagem pré-construída oficial.
 
+> **Alternativa rápida:** o script [`setup.sh`](https://github.com/peotta/lab-kali-docker/blob/main/setup.sh) automatiza todos os passos desta atividade com um único comando (veja o [`README.md`](https://github.com/peotta/lab-kali-docker/blob/main/README.md)). As seções abaixo detalham o que o script faz, para quem quiser executar manualmente ou entender cada etapa.
 ### 3.1 Por que Docker?
 
 Em vez de subir máquinas virtuais completas (pesadas, lentas para resetar), usamos containers: cada alvo vulnerável é uma aplicação isolada, leve, que sobe e derruba em segundos. Todo o ambiente roda **no seu próprio notebook** - nenhum alvo depende de servidor externo ou de rede durante a aula.
