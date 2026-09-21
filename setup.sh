@@ -12,7 +12,7 @@ RELEASE_TAR_URL="https://github.com/peotta/lab-kali-docker/releases/download/v1.
 LAB_DIR="$HOME/Desktop/lab-kali-docker"
 
 echo "=================================================="
-echo " Laboratório Kali Linux + Docker — Instalação"
+echo " Laboratório Kali Linux + Docker - Instalação"
 echo " Diretório de destino: $LAB_DIR"
 echo "=================================================="
 echo ""
@@ -86,7 +86,7 @@ fi
 mkdir -p "$(dirname "$LAB_DIR")"
 
 if [ -d "$LAB_DIR/.git" ]; then
-    echo "[OK] Repositório já existe em $LAB_DIR — atualizando..."
+    echo "[OK] Repositório já existe em $LAB_DIR - atualizando..."
     cd "$LAB_DIR"
     git pull
 else

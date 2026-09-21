@@ -7,11 +7,27 @@ Curso de extensão prático de 4h: Kali Linux contra alvos vulneráveis em Docke
 
 ---
 
-## ⚠️ Preparação obrigatória (fazer ANTES da aula)
+## Preparação obrigatória (fazer ANTES da aula)
 
 Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência. **Não deixe para o dia da aula.**
 
-0. **Você precisa de um Kali Linux** para executar as atividades. Se ainda não tiver, instale em máquina virtual seguindo o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) - cobre VirtualBox e VMware.
+**Pré-requisito:** você precisa de um **Kali Linux** para executar as atividades. Se ainda não tiver, instale em máquina virtual seguindo o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) - cobre VirtualBox e VMware.
+
+### Instalação automatizada (recomendado)
+
+O script [`setup.sh`](https://github.com/peotta/lab-kali-docker/blob/main/setup.sh) faz tudo por você: instala o Docker (corrigindo problemas conhecidos do Kali), clona o repositório, baixa as imagens e sobe o ambiente. Basta rodar:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/peotta/lab-kali-docker/main/setup.sh | bash
+```
+
+Ao terminar, confirme o acesso: `http://172.20.0.10` deve abrir a página de login no navegador.
+
+> Se o download das imagens falhar, um pendrive com `lab-images.tar` estará disponível - procure o professor **com antecedência**, não no dia da aula.
+
+### Instalação manual (alternativa passo a passo)
+
+Se preferir controle total, siga os passos abaixo em vez do script:
 
 1. Instale o Docker (veja [`guia-aluno-roteiro.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md), Seção 3.2, se ainda não tiver)
 
@@ -25,7 +41,6 @@ Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência.
    ```bash
    wget https://github.com/peotta/lab-kali-docker/releases/download/v1.0/lab-images.tar
    ```
-   > Se o link não estiver acessível, um pendrive com `lab-images.tar` estará disponível - procure o professor com antecedência, não no dia da aula.
 
 4. Carregue as imagens no Docker local:
    ```bash
@@ -43,10 +58,7 @@ Cada aluno prepara o próprio ambiente, na própria máquina, com antecedência.
 
 6. Confirme o acesso: `http://172.20.0.10` deve abrir a página de login no navegador.
 
-> **Alternativa automatizada:** em vez dos passos 1-5 acima, você pode rodar o script [`setup.sh`](https://github.com/peotta/lab-kali-docker/blob/main/setup.sh) diretamente - ele instala o Docker (se necessário), clona o repositório, baixa as imagens e sobe o ambiente com um único comando:
-> ```bash
-> curl -fsSL https://raw.githubusercontent.com/peotta/lab-kali-docker/main/setup.sh | bash
-> ```
+---
 
 Se qualquer passo falhar, procure o professor com antecedência: resolver isso no dia da aula tira tempo de prática de todo mundo.
 
