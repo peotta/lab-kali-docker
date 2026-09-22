@@ -69,6 +69,7 @@ Se qualquer passo falhar, procure o professor com antecedência: resolver isso n
 ```
 lab-kali-docker/
 ├── README.md
+├── apresentacao-lab-kali-docker_2026.pdf
 ├── guia-aluno-roteiro.md
 ├── guia-instalacao-kali-vm.md
 ├── guia-professor-preparacao.md
@@ -89,6 +90,7 @@ lab-kali-docker/
 | Arquivo | O que é | Para quem |
 |---|---|---|
 | [`README.md`](https://github.com/peotta/lab-kali-docker/blob/main/README.md) | Este arquivo: visão geral do repositório, preparação rápida e índice de tudo o mais | Todo mundo, primeiro contato com o repositório |
+| [`apresentacao-lab-kali-docker_2026.pdf`](https://github.com/peotta/lab-kali-docker/blob/main/apresentacao-lab-kali-docker_2026.pdf) | Apresentação completa de slides da aula em PDF: conceitos, metodologia, comandos práticos e visão Red Team x Blue Team | **Alunos e Professor**, suporte visual e acompanhamento da aula |
 | [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) | Instalar o Kali Linux em máquina virtual usando a imagem pré-construída oficial - cobre VirtualBox e VMware Workstation Pro, configurações recomendadas, primeiro acesso e pós-instalação | **Alunos** que ainda não têm Kali instalado, passo zero antes do roteiro |
 | [`guia-aluno-roteiro.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md) | Roteiro completo da aula: metodologia de pentest, preparação do ambiente e as 7 atividades práticas (reconhecimento, SambaCry, sniffing, força bruta, hash cracking, pós-exploração), com comandos e resultados esperados | **Alunos**, é o documento que se segue durante a aula, do início ao fim |
 | [`guia-professor-preparacao.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-professor-preparacao.md) | Como buildar as imagens Docker do zero, empacotar no `.tar`, publicar como Release do GitHub e testar tudo antes de disponibilizar aos alunos | **Professor**, preparação de bastidor, feita uma vez antes da turma usar |

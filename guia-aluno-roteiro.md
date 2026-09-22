@@ -3,6 +3,7 @@
 **Duração estimada:** 4 horas
 **Formato:** Prático, em duplas
 **Data:** 23/09/2026
+**Slides da aula (PDF):** [`apresentacao-lab-kali-docker_2026.pdf`](https://github.com/peotta/lab-kali-docker/blob/main/apresentacao-lab-kali-docker_2026.pdf)
 
 ---
 
@@ -42,6 +43,8 @@
 > **Clipboard (copiar/colar) entre host e VM:** se o copiar/colar só funciona em um sentido, instale o pacote de integração gráfica (`sudo apt install -y open-vm-tools-desktop && sudo reboot`). Detalhes na seção 3.5 do [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md).
 
 > **Teclado com layout errado?** Se os caracteres especiais não batem (por exemplo, ao digitar `/` aparece `;`), reconfigure o layout: `sudo dpkg-reconfigure keyboard-configuration` - selecione **Portuguese (Brazil)** e reinicie a VM.
+
+> **Slides e material teórico:** Você pode acompanhar ou consultar a apresentação de slides completa pelo PDF [`apresentacao-lab-kali-docker_2026.pdf`](https://github.com/peotta/lab-kali-docker/blob/main/apresentacao-lab-kali-docker_2026.pdf), disponível na raiz do repositório.
 
 ---
 
@@ -225,6 +228,7 @@ Depois do clone e do download do `.tar`, sua pasta `~/Desktop/lab-kali-docker/` 
 
 ```
 ~/Desktop/lab-kali-docker/
+├── apresentacao-lab-kali-docker_2026.pdf <- slides da aula em PDF
 ├── docker-compose.yml              <- veio do git clone, já pronto
 ├── smb.conf                        <- veio do git clone, já pronto
 ├── lab-images.tar                  <- você baixou agora, via wget
