@@ -247,8 +247,6 @@ Você **não precisa criar** nenhum desses arquivos manualmente - eles já vêm 
 **`~/Desktop/lab-kali-docker/docker-compose.yml`:**
 
 ```yaml
-version: "3.8"
-
 networks:
   lab_redsec:
     driver: bridge
