@@ -39,6 +39,10 @@
 
 > **Não tem o Kali instalado ainda?** Antes de continuar, siga o [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md) para instalar o Kali Linux em máquina virtual (VirtualBox ou VMware). Depois volte aqui e continue a partir da Seção 3.
 
+> **Clipboard (copiar/colar) entre host e VM:** se o copiar/colar só funciona em um sentido, instale o pacote de integração gráfica (`sudo apt install -y open-vm-tools-desktop && sudo reboot`). Detalhes na seção 3.5 do [`guia-instalacao-kali-vm.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-instalacao-kali-vm.md).
+
+> **Teclado com layout errado?** Se os caracteres especiais não batem (por exemplo, ao digitar `/` aparece `;`), reconfigure o layout: `sudo dpkg-reconfigure keyboard-configuration` - selecione **Portuguese (Brazil)** e reinicie a VM.
+
 ---
 
 ## 1. Introdução: a metodologia de um teste de intrusão

@@ -286,6 +286,25 @@ docker compose version
 
 Se o Docker ainda não estiver instalado, siga a Seção 3.2 do [`guia-aluno-roteiro.md`](https://github.com/peotta/lab-kali-docker/blob/main/guia-aluno-roteiro.md).
 
+### 3.5 Copiar e colar entre Windows e Kali (clipboard bidirecional)
+
+Se o copiar/colar só funciona do Windows para o Kali, mas não no sentido inverso, o problema geralmente é a falta do pacote de integração gráfica.
+
+O Kali pode ter apenas o `open-vm-tools` (versão de terminal) instalado, sem o complemento `open-vm-tools-desktop` (que habilita clipboard, drag-and-drop e redimensionamento de tela). Instale e reinicie:
+
+```bash
+sudo apt update && sudo apt install -y open-vm-tools-desktop
+sudo reboot
+```
+
+Se já estava instalado e mesmo assim não funciona, o serviço pode ter travado. Reinicie-o sem precisar reiniciar a VM:
+
+```bash
+sudo systemctl restart open-vm-tools
+```
+
+> No VirtualBox o equivalente é o **Guest Additions** - instale via menu Dispositivos > Inserir imagem de CD dos Adicionais de Convidado e depois reinicie a VM.
+
 ---
 
 ## 4. Requisitos mínimos de hardware
