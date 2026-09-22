@@ -99,7 +99,7 @@ lab-kali-docker/
 
 | Alvo | Container | IP | Portas | Usado em |
 |---|---|---|---|---|
-| Página de login | `alvo-login` | 172.20.0.10 | 80 | Enumeração, sniffing, brute force, hash cracking |
+| Página de login | `alvo-login` | 172.20.0.10 | 80 | Enumeração, sniffing, brute force, análise de pacotes (Wireshark), hash cracking |
 | Samba 4.6.3 (SambaCry) | `alvo-samba` | 172.20.0.13 | 445, 6699 | Exploração via Metasploit (CVE-2017-7494) |
 
 ## Escopo

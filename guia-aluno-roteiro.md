@@ -11,11 +11,11 @@
 > **Antes da aula (Atividade 0 - "Preparando o ambiente"):** você prepara o ambiente sozinho, em casa, com antecedência - instalar o Docker, baixar o pacote de imagens, subir os containers e confirmar que os 2 alvos estão no ar. Nada disso acontece no dia da aula.
 >
 > **No dia da aula (Atividades 1 a 7):** com o ambiente já pronto, você executa ao vivo, no laboratório:
-> - **Atividade 1** - Reconhecimento e enumeração dos alvos
+> - **Atividade 1** - Reconhecimento e enumeração dos alvos (Nmap, Wireshark, Gobuster)
 > - **Atividade 2** - Análise de vulnerabilidades
 > - **Atividade 3** - Exploração remota via Metasploit (SambaCry)
 > - **Atividade 4** - Sniffing de credenciais
-> - **Atividade 5** - Força bruta online
+> - **Atividade 5** - Força bruta online (Hydra e análise no Wireshark)
 > - **Atividade 6** - Quebra de hash offline
 > - **Atividade 7** - Pós-exploração e reflexão sobre detecção/defesa
 >
@@ -430,7 +430,60 @@ curl http://172.20.0.10/admin/
 
 Guarde esse diretório na memória - ele volta a ser útil na Atividade 6.
 
-**Checkpoint:** ao final desta atividade você deve ter, para cada alvo, porta → serviço → versão → tecnologia, além do diretório `/admin/` encontrado.
+### 4.4 Analisando o escaneamento do Nmap no Wireshark (Visão Blue Team)
+
+O Nmap descobre portas abertas gerando pacotes TCP específicos. Usar o **Wireshark** permite "ver" esse escaneamento acontecendo pela rede, compreendendo o comportamento sob a ótica de detecção e defesa.
+
+**Passo 1 - Identifique a interface de rede do laboratório:**
+
+O Docker cria uma interface bridge para a rede `lab_redsec` (faixa `172.20.0.0/24`, IP `172.20.0.1`). É por ela que todo o tráfego entre o Kali e os containers transita:
+
+```bash
+ip a | grep -A 2 "br-"
+```
+
+Anote o nome da interface exibida com estado `UP` (no formato `br-xxxxxxxxxxxx`).
+
+**Passo 2 - Abra o Wireshark:**
+
+No terminal do Kali (ou pelo menu de aplicativos em **09 - Sniffing & Spoofing > wireshark**):
+
+```bash
+sudo wireshark &
+```
+
+*(O `&` executa em segundo plano, liberando o terminal para novos comandos)*.
+
+1. Na tela inicial do Wireshark, dê um duplo clique na sua interface bridge (`br-xxxxxxxxxxxx`) para iniciar a captura.
+2. Na barra verde de filtros de exibição no topo (*Apply a display filter...*), digite e pressione **Enter**:
+
+```
+ip.addr == 172.20.0.10 && tcp
+```
+
+*(Isso filtra apenas o tráfego TCP direcionado ou vindo do alvo web)*.
+
+**Passo 3 - Execute uma varredura TCP SYN direcionada:**
+
+Em outro terminal, execute uma varredura testando a porta 80 (sabidamente aberta) e portas fechadas (81 e 82):
+
+```bash
+nmap -sS -p 80,81,82 172.20.0.10
+```
+
+**Passo 4 - O que observar no Wireshark:**
+
+* **Porta aberta (80/tcp):**
+  1. O Kali envia um pacote `[SYN]`.
+  2. O container responde com `[SYN, ACK]` (porta aberta e aceitando conexão).
+  3. O Nmap envia imediatamente um pacote `[RST]` para encerrar antes de completar o handshake. Esse é o scan "half-open" (furtivo).
+* **Portas fechadas (81 e 82/tcp):**
+  1. O Kali envia `[SYN]`.
+  2. O container responde de imediato com `[RST, ACK]` (porta fechada, conexão rejeitada).
+
+> **Dica Blue Team:** Um analista de SOC ou sistema IDS/IPS (como Snort ou Suricata) detecta port scans observando esse padrão: um único IP de origem gerando dezenas de conexões `SYN` incompletas para portas sequenciais em fração de segundo.
+
+**Checkpoint:** ao final desta atividade você deve ter, para cada alvo, porta → serviço → versão → tecnologia, o diretório `/admin/` encontrado e a compreensão de como o scan do Nmap se comporta visualmente no Wireshark.
 
 ---
 
@@ -638,7 +691,33 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished
 
 A sintaxe do `http-post-form` tem três partes separadas por `:`: o caminho (`/`), o corpo do POST (com `^USER^`/`^PASS^` como marcadores substituídos a cada tentativa), e `F=incorretos` - a palavra que aparece na resposta quando o login **falha**.
 
-**Para refletir:** por que uma wordlist pequena e "óbvia" já foi suficiente aqui? O que um limite de tentativas ou CAPTCHA mudariam?
+**Passo 3 - Analisando a força bruta no Wireshark em tempo real:**
+
+Com o Wireshark ainda capturando na interface `br-xxxxxxxxxxxx` (se fechou, basta reabrir com `sudo wireshark &` na mesma interface), altere o filtro de exibição para:
+
+```
+http.request.method == "POST"
+```
+
+Execute novamente o comando do Hydra no terminal:
+
+```bash
+hydra -l admin -P /tmp/senhas.txt 172.20.0.10 http-post-form \
+  "/:usuario=^USER^&senha=^PASS^:F=incorretos"
+```
+
+**O que observar:**
+
+1. **Rajada de requisições:** Você verá uma sequência imediata de pacotes `POST / HTTP/1.1`, um para cada senha tentada da sua lista (`123456`, `admin`, `password`, `password123`, etc.).
+2. **Inspeção de conteúdo (Follow Stream):**
+   - Clique com o botão direito em qualquer uma das requisições `POST` listadas.
+   - Selecione **Follow > HTTP Stream**.
+   - Em **vermelho**, observe a requisição com o parâmetro `usuario=admin&senha=...`.
+   - Em **azul**, observe a resposta do servidor: as tentativas erradas recebem o HTML com a mensagem `login ou senha incorretos`, enquanto a tentativa correta recebe a resposta de sucesso.
+
+**Para refletir:** 
+- Por que a força bruta online é considerada um ataque extremamente "barulhento" (*noisy*) na rede?
+- Se um firewall ou WAF (*Web Application Firewall*) monitorar esse tráfego, qual regra simples bloquearia esse ataque em segundos? (Ex.: limitação de taxa / *rate limiting* por IP).
 
 ---
 
@@ -764,6 +843,7 @@ docker logs alvo-samba
 | Ferramenta | Atividade | Para que serve |
 |---|---|---|
 | `nmap` | 1 | Descobrir hosts, portas e versões de serviço |
+| `wireshark` | 1, 5 | Inspeção e análise visual de tráfego de rede em tempo real |
 | `whatweb` | 1 | Identificar tecnologias de uma aplicação web |
 | `nikto` | 1 | Varredura automatizada de configurações inseguras |
 | `gobuster` | 1 | Força bruta de diretórios/arquivos web |
